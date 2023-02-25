@@ -5,10 +5,14 @@ _Proyecto de prueba para un servicio de gestión de usuario haciendo uso de REST
 
 ## Características
 
-Cuando el proyeto se ejecuta internamente crea la BD en memoria en HSQLDB con su esquema, tabla, indices y un registro principal
-el cual se hace uso para las pruebas.
+El proyecto se codifico en el lenguage de programación Java donde se implemento un api REST haciendo uso de Spring Boot.
 
-El servicio que se levanta hace uso del puerto 8282 de la máquina (http://localhost:8282) y el contexto es path /test-user-service.
+El proyeto hace uso de una BD en memoria con HSQLDB que al ejecutarse crea el usuario, esquema, tablas, indices. Además carga dos registros de usuario 
+los cuales se utilizan en las pruebas.
+
+Para el proceso de autenticación se hizo uso de Json Web Token (JWT).
+
+El proyecto al ejecutarse levanta un servicio que utiliza el puerto 8282 de la máquina (http://localhost:8282) y el path-context es /test-user-service
 
 API de usuarios responde con el path (/test-user-service/api/users) con los siguientes métodos creados:
 - __POST__ - Crear Usuario (/)
@@ -23,28 +27,32 @@ API de autenticación responde con el path (/test-user-service/auth) con el sigu
 Se hace uso de validaciones para verificar el formato de correo y el formato de la clave.
 Las expresiones regulares usada son:
 
-_Expresion regular para correo segun la RFC 5322_
-__^[a-zA-Z0-9_!#$%&'\*+/=?{|}~^.-]+@[a-zA-Z0-9.-]+$__
+_Expresión regular para correo según la [RFC 5322](https://www.rfc-editor.org/rfc/rfc5322)_
+```bash
+^[a-zA-Z0-9_!#$%&'\*+/=?{|}~^.-]+@[a-zA-Z0-9.-]+$
+```
 
-_Expresion regular para la clave segun OWASP_
+_Expresión regular para la clave según [OWASP](https://owasp.org/www-community/OWASP_Validation_Regex_Repository)_
 _Contraseña de 4 a 8 caracteres que requiere números y letras minúsculas y mayúsculas_
-__^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$__
+```bash
+^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$
+```
 
-Herramienta de documentación de API responde con el path (/test-user-service/swagger-ui/)
+La herramienta de documentación de API responde con el path (/test-user-service/swagger-ui/) haciendo uso de Swagger.
 
 ## Tecnologias
 
 - [Spring](https://spring.io/) - Marco de trabajo ligero de código abierto basado en Java ampliamente utilizado para desarrollar aplicaciones empresariales el cual brinda un enfoque simplificado y modular
-- [Spring Boot](https://spring.io/projects/spring-boot) - La tecnología de Spring Boot es una herramienta que hace que el desarrollo de aplicaciones web y microservicios con Spring Framework sea más rápido y fácil a través de tres funcionalidades principales: configuración automática, un enfoque obstinado de la configuración y la capacidad de crear aplicaciones independientes.
-- [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#web) - Módulo que permite construir aplicaciones RESTful usando Spring MVC.
-- [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#data.sql.jpa-and-spring-data) - Spring Data JPA, parte de la familia Spring Data más grande, facilita la implementación de repositorios basados en JPA que en su defecto usa la implementacion de Hibernate.
-- [Spring Security](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#web.security) - Módulo que permite brindar una capa de seguridad implementando autenticación y autorización haciendo uso de token.
-- [JJWT](https://github.com/jwtk/jjwt) - Libreria que permite user JJWT. JJWT tiene como objetivo ser la biblioteca más fácil de usar y comprender para crear y verificar JSON Web Tokens (JWT) en JVM.
-- [Lombok](https://projectlombok.org/) - Libreria para la gestión automática de recursos, generación automática de getters, setters, equals, hashCode y toString, etc
-- [SpringFox](https://github.com/springfox/springfox) - Librería para la documentación de API JSON para aplicaciones basadas en Spring.
+- [Spring Boot v2.7.8](https://spring.io/projects/spring-boot) - La tecnología de Spring Boot es una herramienta que hace que el desarrollo de aplicaciones web y microservicios con Spring Framework sea más rápido y fácil a través de tres funcionalidades principales: configuración automática, un enfoque obstinado de la configuración y la capacidad de crear aplicaciones independientes.
+- [Spring Web v2.7.8](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#web) - Módulo que permite construir aplicaciones RESTful usando Spring MVC.
+- [Spring Data JPA v2.7.8](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#data.sql.jpa-and-spring-data) - Spring Data JPA, parte de la familia Spring Data más grande, facilita la implementación de repositorios basados en JPA que en su defecto usa la implementacion de Hibernate.
+- [Spring Security v2.7.8](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#web.security) - Módulo que permite brindar una capa de seguridad implementando autenticación y autorización haciendo uso de token.
+- [JJWT v0.11.2](https://github.com/jwtk/jjwt) - Libreria que permite user JJWT. JJWT tiene como objetivo ser la biblioteca más fácil de usar y comprender para crear y verificar JSON Web Tokens (JWT) en JVM.
+- [Lombok v1.18.24](https://projectlombok.org/) - Libreria para la gestión automática de recursos, generación automática de getters, setters, equals, hashCode y toString, etc
+- [SpringFox v3.0.0](https://github.com/springfox/springfox) - Librería para la documentación de API JSON para aplicaciones basadas en Spring.
 - [HSQLDB](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#web.security) - HyperSQL DataBase es un sistema de base de datos relacional SQL escrito en Java. Ofrece un motor de base de datos transaccional pequeño, rápido y de subprocesos múltiples con tablas en memoria y basadas en disco, y admite modos integrados y de servidor.
-- [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.8/gradle-plugin/reference/html/) - Plugin brinda soporte de Spring Boot en Gradle.
-- [Swagger](https://swagger.io/) - Herramienta de código abierto para diseñar, construir, documentar, y utilizar servicios web RESTful.
+- [Spring Boot Gradle Plugin v2.7.8](https://docs.spring.io/spring-boot/docs/2.7.8/gradle-plugin/reference/html/) - Plugin brinda soporte de Spring Boot en Gradle.
+- [Swagger v3](https://swagger.io/) - Herramienta de código abierto para diseñar, construir, documentar, y utilizar servicios web RESTful.
 
 ## Requerimientos
 
@@ -107,6 +115,12 @@ java -jar user-service-1.0.jar
 
 __Abrir el proyecto con el IDE__
 
+Los pasos para abrir el proyecto puede variar conforme el IDE que se use en este caso menciono los pasos
+que se pueden seguir para IntelliJ.
+
+- Ejecutar IntelliJ IDEA y en la ventana de bienvenida del IDE, dar clic en el botón “Open”.
+- Seleccionar el directorio donde se encuentra el proyecto y dar clic en el botón "OK".
+- Esperar que el IDE configure el proyecto.
 
 __Consumir API__
 
