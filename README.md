@@ -10,14 +10,14 @@ el cual se hace uso para las pruebas.
 
 El servicio que se levanta hace uso del puerto 8282 de la máquina (http://localhost:8282) y el contexto es path /test-user-service.
 
-API de usuarios responde con el path (/test-user-service/api/users) con las siguientes metodos creados:
+API de usuarios responde con el path (/test-user-service/api/users) con los siguientes métodos creados:
 - __POST__ - Crear Usuario (/)
 - __GET__ - Obtener usuario por Id (/{userId})
 - __GET__ - Obtener todos los usuarios (/)
 - __PUT__ - Actualizar usuario (/{userId})
 - __DELETE__ - Borrar usuario (/{userId})
 
-API de autenticación responde con el path (/test-user-service/auth) con el siguiente metodo:
+API de autenticación responde con el path (/test-user-service/auth) con el siguiente método:
 - __POST__ - Acceso (/login)
 
 Se hace uso de validaciones para verificar el formato de correo y el formato de la clave.
@@ -35,9 +35,9 @@ Herramienta de documentación de API responde con el path (/test-user-service/sw
 ## Tecnologias
 
 - [Spring](https://spring.io/) - Marco de trabajo ligero de código abierto basado en Java ampliamente utilizado para desarrollar aplicaciones empresariales el cual brinda un enfoque simplificado y modular
-- [Spring Boot](https://spring.io/projects/spring-boot) - La tecnología de Spring Boot que facilita la creación de aplicaciones independientes basadas en Spring de grado de producción.
+- [Spring Boot](https://spring.io/projects/spring-boot) - La tecnología de Spring Boot es una herramienta que hace que el desarrollo de aplicaciones web y microservicios con Spring Framework sea más rápido y fácil a través de tres funcionalidades principales: configuración automática, un enfoque obstinado de la configuración y la capacidad de crear aplicaciones independientes.
 - [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#web) - Módulo que permite construir aplicaciones RESTful usando Spring MVC.
-- [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#data.sql.jpa-and-spring-data) - Spring Data JPA, parte de la familia Spring Data más grande, facilita la implementación de repositorios basados ​​en JPA que en su defecto usa la implementacion de Hibernate.
+- [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#data.sql.jpa-and-spring-data) - Spring Data JPA, parte de la familia Spring Data más grande, facilita la implementación de repositorios basados en JPA que en su defecto usa la implementacion de Hibernate.
 - [Spring Security](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#web.security) - Módulo que permite brindar una capa de seguridad implementando autenticación y autorización haciendo uso de token.
 - [JJWT](https://github.com/jwtk/jjwt) - Libreria que permite user JJWT. JJWT tiene como objetivo ser la biblioteca más fácil de usar y comprender para crear y verificar JSON Web Tokens (JWT) en JVM.
 - [Lombok](https://projectlombok.org/) - Libreria para la gestión automática de recursos, generación automática de getters, setters, equals, hashCode y toString, etc
@@ -53,8 +53,9 @@ Herramienta de documentación de API responde con el path (/test-user-service/sw
 - [Java 1.8](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html) - Lenguaje de programación ampliamente utilizado para codificar aplicaciones web creado por Sun Microsystems en 1995.
 - [IntelliJ](https://www.jetbrains.com/es-es/idea/download/#section=windows) - IDE inteligente y sensible al contexto para trabajar con Java y otros lenguajes JVM como Kotlin, Scala y Groovy en todo tipo de aplicaciones.
 - [Postman](https://www.postman.com/downloads/) - Herramienta para realizar pruebas a la api
+- [Chrome](https://www.google.com/intl/es_es/chrome/) - Navegador
 
-_Nota: Se puede usar el IDE de preferencia ya sea Eclipse, Visual Studio Code, Netbeans, etc._
+- _Nota: Se puede usar el IDE de preferencia ya sea Eclipse, Visual Studio Code, Netbeans, etc; así como el navegador_
 
 ## Instalación
 
@@ -120,7 +121,7 @@ petición en postman en la pestaña Authorization.
 token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWdpdGFyaW8ud2lsYmVydEBnbWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjc3MjI1MjQzLCJleHAiOjE2Nzk4MTcyNDN9.5v4GMjiz3zJzrWYCW0jr5lPAQsWD1XF4XMcpVE4QJLQ
 ```
 
-- Crear usuario
+- __Crear usuario__
 
 ```bash
 Method: POST
@@ -141,7 +142,7 @@ Body raw JSON:
 ```
 ![img.png](resource_readme/Postman_Crear_Usuario.PNG)
 
-- Obtener usuario por Id
+- __Obtener usuario por Id__
 
 ```bash
 Method: GET
@@ -151,7 +152,7 @@ Path parameter:
 ```
 ![img.png](resource_readme/Postman_Obtener_Usuario.PNG)
 
-- Obtener todos los usuarios
+- __Obtener todos los usuarios__
 
 ```bash
 Method: GET
@@ -159,7 +160,7 @@ Url: http://localhost:8282/test-user-service/api/users/
 ```
 ![img.png](resource_readme/Postman_Obtener_Todos_Usuario.PNG)
 
-- Actualizar usuario
+- __Actualizar usuario__
 
 ```bash
 Method: PUT
@@ -191,7 +192,7 @@ Body raw JSON:
 ```
 ![img.png](resource_readme/Postman_Actualizar_Usuario.PNG)
 
-- Borrar usuario
+- __Borrar usuario__
 
 ```bash
 Method: DELETE
@@ -201,7 +202,7 @@ Path parameter:
 ```
 ![img.png](resource_readme/Postman_Eliminar_Usuario.PNG)
 
-- Acceso
+- __Acceso__
 
 ```bash
 Method: POST
@@ -210,11 +211,18 @@ Request Parameter:
   email: sagitario.wilbert@gmail.com
   password: Wml.2023
 ```
-![img.png](resource_readme/Postman_Acceso.png)
+![img.png](resource_readme/Postman_Acceso.PNG)
 
 _Nota: Tomar en cuenta que al consumir este servicio se convierte
 como token valido el que se genero. Por ende el token proporcionado 
 ya no sería valido._
+
+- __Acceso a Swagger__
+En la barra del navegador por la ruta:
+```bash
+Url: http://localhost:8282/swagger-ui
+```
+![img.png](resource_readme/Swagger.PNG)
 
 ## Autor
 
