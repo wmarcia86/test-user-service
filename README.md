@@ -16,14 +16,14 @@ Para el proceso de autenticación se hizo uso de JSON Web Token (JWT) integrado 
 
 El proyecto al ejecutarse levanta un servicio que utiliza el puerto 8282 de la máquina (http://localhost:8282) y el path-context es /test-user-service
 
-API de usuarios responde con el path (/test-user-service/api/users) con los siguientes métodos creados:
+EL API de usuarios responde con el path (/test-user-service/api/users) con los siguientes métodos creados:
 - __POST__ - Crear Usuario (/)
 - __GET__ - Obtener usuario por Id (/{userId})
 - __GET__ - Obtener todos los usuarios (/)
 - __PUT__ - Actualizar usuario (/{userId})
 - __DELETE__ - Borrar usuario (/{userId})
 
-API de autenticación responde con el path (/test-user-service/auth) con el siguiente método:
+El API de autenticación responde con el path (/test-user-service/auth) con el siguiente método:
 - __POST__ - Acceso (/login)
 
 Se hace uso de validaciones para verificar el formato de correo y el formato de la clave.
@@ -72,7 +72,7 @@ del proyecto [Ver](resource_readme/Diagrama_Componentes_User_Service.png)
 - [Postman v10.9.1](https://www.postman.com/downloads/) - Herramienta para realizar pruebas a la api
 - [Chrome v110.0.5481.105](https://www.google.com/intl/es_es/chrome/) - Navegador web
 
-- _Nota: Se puede usar el IDE de preferencia ya sea Eclipse, Visual Studio Code, Netbeans, etc; así como el navegador_
+_Nota: Se puede usar el IDE de preferencia ya sea Eclipse, Visual Studio Code, Netbeans, etc; así como el navegador web._
 
 ## Instalación
 
@@ -115,7 +115,7 @@ En Windows
 gradlew.bat bootJar
 ```
 
-Dentro del directorio del proyecto entrar a la carpeta ../build/libs
+Dentro del directorio del proyecto entrar a la carpeta ../build/libs y ejecutar el comando:
 
 En Mac, Linux o Windows
 ```bash
@@ -138,7 +138,7 @@ Se puede realizar pruebas haciendo uso de Postman o cualquiera otra herramienta 
 Puede descargar la colección de postman [Collection Postman](resource_readme/User-Service-Test.postman_collection.json)
 
 El token que se puede usar para las pruebas es el siguiente y este tiene que ser agregado a la
-petición en postman en la pestaña Authorization.
+petición en postman en la pestaña Authorization excepto para la petición al end point de acceso.
 
 ```bash
 token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWdpdGFyaW8ud2lsYmVydEBnbWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjc3MjI1MjQzLCJleHAiOjE2Nzk4MTcyNDN9.5v4GMjiz3zJzrWYCW0jr5lPAQsWD1XF4XMcpVE4QJLQ
@@ -241,7 +241,8 @@ como token valido el que se genero. Por ende el token proporcionado
 ya no sería valido._
 
 - __Acceso a Swagger__
-En la barra del navegador por la ruta:
+En la barra del navegador poner la ruta:
+
 ```bash
 Url: http://localhost:8282/swagger-ui
 ```
