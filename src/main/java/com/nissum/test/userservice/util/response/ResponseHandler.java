@@ -23,11 +23,13 @@ public class ResponseHandler {
      * @param object
      * @return ResponseEntity<Object>
      */
-    public static ResponseEntity<Object> generateResponse(String message, HttpStatus httpStatus, Object object) {
-        ResponseDTO response = ResponseDTO.builder().status(httpStatus.value()).message(message)
+    public static ResponseEntity<Object> generateAuthenticatedResponse(Object object) {
+        ResponseDTO response = ResponseDTO.builder()
+                .status(HttpStatus.OK.value())
+                .message(MessageEnum.AUTHENTICATED.getMessage())
                 .data(object).build();
 
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     /**
@@ -37,7 +39,9 @@ public class ResponseHandler {
      * @return ResponseEntity<Object>
      */
     public static ResponseEntity<Object> generateCreatedResponse(Object object) {
-        ResponseDTO response = ResponseDTO.builder().status(HttpStatus.CREATED.value()).message(MessageEnum.CREATED.getMessage())
+        ResponseDTO response = ResponseDTO.builder()
+                .status(HttpStatus.CREATED.value())
+                .message(MessageEnum.CREATED.getMessage())
                 .data(object).build();
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -50,7 +54,8 @@ public class ResponseHandler {
      * @return ResponseEntity<Object>
      */
     public static ResponseEntity<Object> generateRetrievedResponse(Object object, boolean isMultiple) {
-        ResponseDTO response = ResponseDTO.builder().status(HttpStatus.OK.value())
+        ResponseDTO response = ResponseDTO.builder()
+                .status(HttpStatus.OK.value())
                 .message(isMultiple ? MessageEnum.RETRIEVED_MULTIPLE.getMessage() : MessageEnum.RETRIEVED_ONLY.getMessage())
                 .data(object).build();
 
@@ -64,7 +69,9 @@ public class ResponseHandler {
      * @return ResponseEntity<Object>
      */
     public static ResponseEntity<Object> generateUpdatedResponse(Object object) {
-        ResponseDTO response = ResponseDTO.builder().status(HttpStatus.OK.value()).message(MessageEnum.UPDATED.getMessage())
+        ResponseDTO response = ResponseDTO.builder()
+                .status(HttpStatus.OK.value())
+                .message(MessageEnum.UPDATED.getMessage())
                 .data(object).build();
 
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -77,7 +84,9 @@ public class ResponseHandler {
      * @return ResponseEntity<Object>
      */
     public static ResponseEntity<Object> generateDeletedResponse(Object object) {
-        ResponseDTO response = ResponseDTO.builder().status(HttpStatus.OK.value()).message(MessageEnum.DELETED.getMessage())
+        ResponseDTO response = ResponseDTO.builder()
+                .status(HttpStatus.OK.value())
+                .message(MessageEnum.DELETED.getMessage())
                 .data(object).build();
 
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -91,8 +100,7 @@ public class ResponseHandler {
      * @return ResponseEntity<Object>
      */
     public static ResponseEntity<ErrorDTO> generateErrorResponse(String message, HttpStatus httpStatus) {
-        ErrorDTO errorDTO = ErrorDTO.builder().status(httpStatus.value())
-                .message(message).timestamp(Instant.now()).build();
+        ErrorDTO errorDTO = ErrorDTO.builder().status(httpStatus.value()).message(message).timestamp(Instant.now()).build();
 
         return new ResponseEntity<>(errorDTO, httpStatus);
     }

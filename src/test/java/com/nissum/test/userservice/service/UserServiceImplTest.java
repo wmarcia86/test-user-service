@@ -233,6 +233,35 @@ public class UserServiceImplTest {
 
     @Test
     void updateUser() {
+        UserCreateRequestDTO userCreateRequestDTOTestSource = userCreateRequestDTOTest;
+        Role roleSource = roleTest;
+
+        Assertions.assertTrue(validationHandler.validateFormatEmail(userCreateRequestDTOTestSource.getEmail()));
+        Assertions.assertTrue(validationHandler.validateFormatPassword(userCreateRequestDTOTestSource.getPassword()));
+
+        Mockito.when(userRepository.existsUserByEmail(userCreateRequestDTOTestSource.getEmail())).thenReturn(false);
+        Assertions.assertFalse(userRepository.existsUserByEmail(userCreateRequestDTOTestSource.getEmail()));
+
+        Mockito.when(roleRepository.findByName("ROLE_ADMIN")).thenReturn(Optional.ofNullable(roleSource));
+        Role roleTarget = roleRepository.findByName("ROLE_ADMIN").get();
+
+        Assertions.assertNotNull(roleTarget);
+        Assertions.assertEquals(roleTarget, roleSource);
+
+        Mockito.when(passwordEncoder.encode(userCreateRequestDTOTestSource.getPassword())).thenReturn(PASSWORD_ENCODED);
+        String passwordEncoded = passwordEncoder.encode(userCreateRequestDTOTestSource.getPassword());
+
+        List<Role> lstRoleSource = Arrays.asList(roleSource);
+
+        Mockito.when(jwtProvider.generateToken(userCreateRequestDTOTestSource.getEmail(), lstRoleSource)).thenReturn(TOKEN);
+        String token = jwtProvider.generateToken(userCreateRequestDTOTestSource.getEmail(), lstRoleSource);
+
+        User userTarget = new User(userCreateRequestDTOTestSource, passwordEncoded, token, lstRoleSource);
+
+        Mockito.when(userRepository.save(userTarget)).thenAnswer(x -> userTarget);
+        userRepository.save(userTarget);
+
+        new UserResponseDTO(userTarget, false);
     }
 
     @Test

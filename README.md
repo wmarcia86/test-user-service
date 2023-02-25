@@ -5,12 +5,14 @@ _Proyecto de prueba para un servicio de gestión de usuario haciendo uso de REST
 
 ## Características
 
-El proyecto se codifico en el lenguage de programación Java donde se implemento un api REST haciendo uso de Spring Boot.
+El proyecto se codifico en el lenguage de programación Java donde se implemento un api REST haciendo uso de Spring Boot. 
+
+La Herramienta de contrucción seleccionada fue Gradle utilizando Groovy como lenguaje especifico de dominio,
 
 El proyeto hace uso de una BD en memoria con HSQLDB que al ejecutarse crea el usuario, esquema, tablas, indices. Además carga dos registros de usuario 
 los cuales se utilizan en las pruebas.
 
-Para el proceso de autenticación se hizo uso de Json Web Token (JWT).
+Para el proceso de autenticación se hizo uso de JSON Web Token (JWT) integrado con Spring Security.
 
 El proyecto al ejecutarse levanta un servicio que utiliza el puerto 8282 de la máquina (http://localhost:8282) y el path-context es /test-user-service
 
@@ -38,7 +40,12 @@ _Contraseña de 4 a 8 caracteres que requiere números y letras minúsculas y ma
 ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$
 ```
 
+Se realizaron pruebas unitarias con JUnit y Mockito.
+
 La herramienta de documentación de API responde con el path (/test-user-service/swagger-ui/) haciendo uso de Swagger.
+
+Se puede revisar un diagrama de componentes donde se visualizan las clases implementadas agrupadas conforme la estructura
+del proyecto [Ver](resource_readme/Diagrama_Componentes_User_Service.png)
 
 ## Tecnologias
 
@@ -48,20 +55,22 @@ La herramienta de documentación de API responde con el path (/test-user-service
 - [Spring Data JPA v2.7.8](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#data.sql.jpa-and-spring-data) - Spring Data JPA, parte de la familia Spring Data más grande, facilita la implementación de repositorios basados en JPA que en su defecto usa la implementacion de Hibernate.
 - [Spring Security v2.7.8](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#web.security) - Módulo que permite brindar una capa de seguridad implementando autenticación y autorización haciendo uso de token.
 - [JJWT v0.11.2](https://github.com/jwtk/jjwt) - Libreria que permite user JJWT. JJWT tiene como objetivo ser la biblioteca más fácil de usar y comprender para crear y verificar JSON Web Tokens (JWT) en JVM.
-- [Lombok v1.18.24](https://projectlombok.org/) - Libreria para la gestión automática de recursos, generación automática de getters, setters, equals, hashCode y toString, etc
+- [Lombok v1.18.24](https://projectlombok.org/) - Libreria para la gestión automática de recursos, generación automática de getters, setters, equals, hashCode y toString, etc.
 - [SpringFox v3.0.0](https://github.com/springfox/springfox) - Librería para la documentación de API JSON para aplicaciones basadas en Spring.
-- [HSQLDB](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#web.security) - HyperSQL DataBase es un sistema de base de datos relacional SQL escrito en Java. Ofrece un motor de base de datos transaccional pequeño, rápido y de subprocesos múltiples con tablas en memoria y basadas en disco, y admite modos integrados y de servidor.
+- [HSQLDB n2.5.2](https://docs.spring.io/spring-boot/docs/2.7.8/reference/htmlsingle/#web.security) - HyperSQL DataBase es un sistema de base de datos relacional SQL escrito en Java. Ofrece un motor de base de datos transaccional pequeño, rápido y de subprocesos múltiples con tablas en memoria y basadas en disco, y admite modos integrados y de servidor.
 - [Spring Boot Gradle Plugin v2.7.8](https://docs.spring.io/spring-boot/docs/2.7.8/gradle-plugin/reference/html/) - Plugin brinda soporte de Spring Boot en Gradle.
 - [Swagger v3](https://swagger.io/) - Herramienta de código abierto para diseñar, construir, documentar, y utilizar servicios web RESTful.
 
+![img.png](resource_readme/Dependencias.PNG)
+
 ## Requerimientos
 
-- [Gradle](https://docs.gradle.org) - Herramienta de código abierto que permite la automatización de la compilación de código fuente, la cual se encuentra centrada en la flexibilidad y el rendimiento; además dispone de un sistema de gestión de dependencias sólido. Gradle basa la construcción de proyectos en algunos conceptos de Apache Ant y Apache Maven.
-- [Git](https://git-scm.com/downloads) - Sistema de control de versiones diseñado por Linus Torvalds, pensando en la eficiencia, la confiabilidad y compatibilidad del mantenimiento de versiones de aplicaciones cuando estas tienen un gran número de archivos de código fuente.
+- [Gradle v8.0-bin](https://docs.gradle.org) - Herramienta de código abierto que permite la automatización de la compilación de código fuente, la cual se encuentra centrada en la flexibilidad y el rendimiento; además dispone de un sistema de gestión de dependencias sólido. Gradle basa la construcción de proyectos en algunos conceptos de Apache Ant y Apache Maven.
+- [Git v2.35.1](https://git-scm.com/downloads) - Sistema de control de versiones diseñado por Linus Torvalds, pensando en la eficiencia, la confiabilidad y compatibilidad del mantenimiento de versiones de aplicaciones cuando estas tienen un gran número de archivos de código fuente.
 - [Java 1.8](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html) - Lenguaje de programación ampliamente utilizado para codificar aplicaciones web creado por Sun Microsystems en 1995.
-- [IntelliJ](https://www.jetbrains.com/es-es/idea/download/#section=windows) - IDE inteligente y sensible al contexto para trabajar con Java y otros lenguajes JVM como Kotlin, Scala y Groovy en todo tipo de aplicaciones.
-- [Postman](https://www.postman.com/downloads/) - Herramienta para realizar pruebas a la api
-- [Chrome](https://www.google.com/intl/es_es/chrome/) - Navegador
+- [IntelliJ v2021.3.2](https://www.jetbrains.com/es-es/idea/download/#section=windows) - IDE inteligente y sensible al contexto para trabajar con Java y otros lenguajes JVM como Kotlin, Scala y Groovy en todo tipo de aplicaciones.
+- [Postman v10.9.1](https://www.postman.com/downloads/) - Herramienta para realizar pruebas a la api
+- [Chrome v110.0.5481.105](https://www.google.com/intl/es_es/chrome/) - Navegador web
 
 - _Nota: Se puede usar el IDE de preferencia ya sea Eclipse, Visual Studio Code, Netbeans, etc; así como el navegador_
 
