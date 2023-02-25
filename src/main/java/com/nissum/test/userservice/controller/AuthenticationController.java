@@ -29,8 +29,8 @@ public class AuthenticationController {
     // Create User
     @ApiOperation(value = "This method is used to login")
     @PostMapping("/login")
-    public ResponseEntity<Object> createUser(@RequestParam(required = true) String email,
-                                             @RequestParam(required = true) String password) throws ValidationException {
+    public ResponseEntity<Object> login(@RequestParam(required = true) String email,
+                                        @RequestParam(required = true) String password) throws ValidationException {
 
         return ResponseHandler.generateResponse(MessageEnum.AUTHENTICATED.getMessage(), HttpStatus.OK,
                 userService.authenticate(email, password));

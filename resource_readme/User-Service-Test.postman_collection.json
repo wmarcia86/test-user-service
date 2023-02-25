@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "ffa8f185-ef2c-49e1-9fda-557b49297eec",
+		"name": "User-Service-Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19914326"
+	},
+	"item": [
+		{
+			"name": "Acceso",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "sagitario.wilbert@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Wml.2023",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8282/test-user-service/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8282",
+					"path": [
+						"test-user-service",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWdpdGFyaW8ud2lsYmVydEBnbWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjc3MjI1MjQzLCJleHAiOjE2Nzk4MTcyNDN9.5v4GMjiz3zJzrWYCW0jr5lPAQsWD1XF4XMcpVE4QJLQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Williams Antonio Marcia Lanzas\",\r\n    \"email\": \"williams.marcia@gmail.com\",\r\n    \"password\": \"mlW.2023\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"(505) 0001-0000\",\r\n            \"citycode\": \"MG\",\r\n            \"countrycode\": \"NI\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8282/test-user-service/api/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8282",
+					"path": [
+						"test-user-service",
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWdpdGFyaW8ud2lsYmVydEBnbWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjc3MjI1MjQzLCJleHAiOjE2Nzk4MTcyNDN9.5v4GMjiz3zJzrWYCW0jr5lPAQsWD1XF4XMcpVE4QJLQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Wilbert Antonio Marcia Lanzas\",\r\n    \"email\": \"sagitario.wilbert@gmail.com\",\r\n    \"password\": \"Wml.2023\",\r\n    \"isActive\": true,\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"(505) 1127-0000\",\r\n            \"citycode\": \"MG\",\r\n            \"countrycode\": \"NI\",\r\n            \"isActve\": true\r\n        },\r\n        {\r\n            \"id\": \"c0a83801-8682-199d-8186-826cbcbe0001\",\r\n            \"number\": \"(505) 1129-0000\",\r\n            \"citycode\": \"MG\",\r\n            \"countrycode\": \"NI\",\r\n            \"isActve\": true\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8282/test-user-service/api/users/c0a83801-8682-199d-8186-826ae3720000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8282",
+					"path": [
+						"test-user-service",
+						"api",
+						"users",
+						"c0a83801-8682-199d-8186-826ae3720000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Usuario por Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWdpdGFyaW8ud2lsYmVydEBnbWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjc3MjI1MjQzLCJleHAiOjE2Nzk4MTcyNDN9.5v4GMjiz3zJzrWYCW0jr5lPAQsWD1XF4XMcpVE4QJLQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Williams Antonio Marcia Lanzas\",\r\n    \"email\": \"williams.marcia@gmail.com\",\r\n    \"password\": \"mlW.2023\",\r\n    \"active\": true,\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"(505) 0000-0000\",\r\n            \"citycode\": \"MG\",\r\n            \"countrycode\": \"NI\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8282/test-user-service/api/users/c0a83801-8682-199d-8186-826ae3720000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8282",
+					"path": [
+						"test-user-service",
+						"api",
+						"users",
+						"c0a83801-8682-199d-8186-826ae3720000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Usuario por Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWdpdGFyaW8ud2lsYmVydEBnbWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjc3MjI1MjQzLCJleHAiOjE2Nzk4MTcyNDN9.5v4GMjiz3zJzrWYCW0jr5lPAQsWD1XF4XMcpVE4QJLQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Williams Antonio Marcia Lanzas\",\r\n    \"email\": \"williams.marcia@gmail.com\",\r\n    \"password\": \"mlW.2023\",\r\n    \"active\": true,\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"(505) 0000-0000\",\r\n            \"citycode\": \"MG\",\r\n            \"countrycode\": \"NI\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8282/test-user-service/api/users/c0a83801-8686-138f-8186-8616454b0001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8282",
+					"path": [
+						"test-user-service",
+						"api",
+						"users",
+						"c0a83801-8686-138f-8186-8616454b0001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Todos los Usuarios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWdpdGFyaW8ud2lsYmVydEBnbWFpbC5jb20iLCJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjc3MjI1MjQzLCJleHAiOjE2Nzk4MTcyNDN9.5v4GMjiz3zJzrWYCW0jr5lPAQsWD1XF4XMcpVE4QJLQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Williams Antonio Marcia Lanzas\",\r\n    \"email\": \"williams.marcia@gmail.com\",\r\n    \"password\": \"mlW.2023\",\r\n    \"active\": true,\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"(505) 0000-0000\",\r\n            \"citycode\": \"MG\",\r\n            \"countrycode\": \"NI\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8282/test-user-service/api/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8282",
+					"path": [
+						"test-user-service",
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
